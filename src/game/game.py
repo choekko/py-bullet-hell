@@ -1,5 +1,6 @@
 import pygame
 import random
+import os
 from game.utils import get_reversed_direction, is_collided
 from game.player import Player
 from game.enemy import Enemy
@@ -7,13 +8,13 @@ from game.score import Score
 from game.satellite import Satellite
 from constants import direction, setting
 
-
-
 class Game:
-    def __init__(self, screen):
+    def __init__(self, screen, on_game_end):
         self.screen = screen
         self.clock = pygame.time.Clock()
-        self.start_time = pygame.time.get_ticks();
+        self.start_time = pygame.time.get_ticks()
+        self.game_status = 'LOBBY'
+        self.on_game_end = on_game_end
 
         # 게임 초기화 및 리소스 로드
         self.player = Player(self.start_time)
@@ -25,33 +26,30 @@ class Game:
             
 
     def update(self):
-        # 게임 로직 업데이트
-        self.player.update()
-        self.satellite.update(self.player.rect.center[0], self.player.rect.center[1])
-        self.score.update()
-        self.background_direction = get_reversed_direction(self.player.direction)
-        self.background_speed = self.player.speed
-      
+      self.player.update()
+      self.satellite.update(self.player.rect.center[0], self.player.rect.center[1])
+      self.score.update()
+      self.background_direction = get_reversed_direction(self.player.direction)
+      self.background_speed = self.player.speed
+    
 
-        for enemy in self.enemies:
-            enemy.update(self.background_speed, self.background_direction)
+      for enemy in self.enemies:
+          enemy.update(self.background_speed, self.background_direction)
 
-        # 무작위로 적 생성
-        if random.randint(1, 100) < 3:
-            self.enemies.append(Enemy())
+      # 무작위로 적 생성
+      if random.randint(1, 100) < 3:
+          self.enemies.append(Enemy())
 
-        new_enemies = []
-        # 충돌 검사
-        for enemy in self.enemies:
-            if is_collided(self.player.rect, enemy.rect, 10):
-                pygame.quit()
-                quit()
-            if is_collided(self.satellite.rect, enemy.rect, 20):
-              self.score.increase_kill_count()
-              continue
-            new_enemies.append(enemy)
-        self.enemies = new_enemies
-
+      new_enemies = []
+      # 충돌 검사
+      for enemy in self.enemies:
+          if is_collided(self.player.rect, enemy.rect, 15):
+              self.on_game_end()
+          if is_collided(self.satellite.rect, enemy.rect, 20):
+            self.score.increase_kill_count()
+            continue
+          new_enemies.append(enemy)
+      self.enemies = new_enemies
 
     def draw(self):
         # 게임 객체 그리기
