@@ -1,6 +1,6 @@
 import pygame
 import random
-from game.utils import get_reversed_direction
+from game.utils import get_reversed_direction, is_collided
 from game.player import Player
 from game.enemy import Enemy
 from constants import direction
@@ -32,7 +32,7 @@ class Game:
 
         # 충돌 검사
         for enemy in self.enemies:
-            if pygame.sprite.collide_rect(self.player, enemy):
+            if is_collided(self.player.rect, enemy.rect):
                 pygame.quit()
                 quit()
 

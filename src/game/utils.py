@@ -26,3 +26,8 @@ def calculate_angle(direction):
   angle_degrees = math.degrees(angle_radians)
   
   return angle_degrees
+
+
+def is_collided(rect1, rect2):
+  distance = math.sqrt((rect1.center[0] - rect2.center[0])**2 + (rect1.center[1] - rect2.center[1]) ** 2)
+  return distance < 10

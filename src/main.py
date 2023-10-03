@@ -7,7 +7,7 @@ pygame.init()
 
 # 화면 설정
 screen = pygame.display.set_mode((setting.SCREEN_WIDTH, setting.SCREEN_HEIGHT))
-pygame.display.set_caption("Bullet Dodger Game")
+pygame.display.set_caption("Space Jam")
 
 # 게임 인스턴스 생성
 game = Game(screen)

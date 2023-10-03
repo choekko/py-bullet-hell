@@ -8,7 +8,7 @@ from constants import sprite, direction, setting
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = sprite.PLAYER_FLOATING_1
+        self.image = sprite.ENEMY_FLOATING_1
         self.rotated_image = self.image
         self._init_status()
 
@@ -35,7 +35,7 @@ class Enemy(pygame.sprite.Sprite):
       self.y = self.rect.y
       self.direction = _direction
       self.speed = setting.ENEMY_SPEED
-      self.rotated_image = pygame.transform.rotate(self.image, -90 + calculate_angle(_direction))
+      self.rotated_image = pygame.transform.rotate(self.image, 90 + calculate_angle(_direction))
 
     def update(self, background_speed=0, background_direction=direction.UP):
         self.x += self.speed * self.direction.x + background_speed * background_direction.x
