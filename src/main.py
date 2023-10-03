@@ -3,6 +3,7 @@ from game.game import Game
 from constants import setting
 
 # 초기화
+pygame.font.init()
 pygame.init()
 
 # 화면 설정

@@ -3,7 +3,9 @@ import random
 from game.utils import get_reversed_direction, is_collided
 from game.player import Player
 from game.enemy import Enemy
-from constants import direction
+from game.score import Score
+from constants import direction, setting
+
 
 
 class Game:
@@ -17,10 +19,13 @@ class Game:
         self.enemies = []
         self.background_speed = 0
         self.background_direction = direction.UP
+        self.score = Score(self.start_time)
+            
 
     def update(self):
         # 게임 로직 업데이트
         self.player.update()
+        self.score.update()
         self.background_direction = get_reversed_direction(self.player.direction)
         self.background_speed = self.player.speed
 
@@ -44,6 +49,10 @@ class Game:
         self.player.draw(self.screen)
         for enemy in self.enemies:
             enemy.draw(self.screen)
+
+        self.score.draw(self.screen)
+
+
 
 
 
