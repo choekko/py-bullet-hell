@@ -10,9 +10,10 @@ class Game:
     def __init__(self, screen):
         self.screen = screen
         self.clock = pygame.time.Clock()
+        self.start_time = pygame.time.get_ticks();
 
         # 게임 초기화 및 리소스 로드
-        self.player = Player()
+        self.player = Player(self.start_time)
         self.enemies = []
         self.background_speed = 0
         self.background_direction = direction.UP
