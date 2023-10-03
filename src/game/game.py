@@ -4,6 +4,7 @@ from game.utils import get_reversed_direction, is_collided
 from game.player import Player
 from game.enemy import Enemy
 from game.score import Score
+from game.satellite import Satellite
 from constants import direction, setting
 
 
@@ -20,14 +21,17 @@ class Game:
         self.background_speed = 0
         self.background_direction = direction.UP
         self.score = Score(self.start_time)
+        self.satellite = Satellite(self.start_time)
             
 
     def update(self):
         # 게임 로직 업데이트
         self.player.update()
+        self.satellite.update(self.player.rect.center[0], self.player.rect.center[1])
         self.score.update()
         self.background_direction = get_reversed_direction(self.player.direction)
         self.background_speed = self.player.speed
+      
 
         for enemy in self.enemies:
             enemy.update(self.background_speed, self.background_direction)
@@ -47,6 +51,7 @@ class Game:
         self.screen.fill((0, 0, 0))  # 배경을 검정색으로 지우기
 
         self.player.draw(self.screen)
+        self.satellite.draw(self.screen)
         for enemy in self.enemies:
             enemy.draw(self.screen)
 

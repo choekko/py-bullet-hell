@@ -5,7 +5,7 @@ from game.utils import calculate_angle
 from constants import sprite, direction, setting
 
 
-class Enemy(pygame.sprite.Sprite):
+class Enemy:
     def __init__(self):
         super().__init__()
         self.image = sprite.ENEMY_FLOATING_1

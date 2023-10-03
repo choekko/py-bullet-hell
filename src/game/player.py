@@ -2,7 +2,7 @@ import pygame
 from constants import sprite, direction
 from game.utils import handle_arrow_key_pressed
 
-class Player(pygame.sprite.Sprite):
+class Player:
     def __init__(self, start_time):
         super().__init__()
         self.clock = pygame.time.Clock()
