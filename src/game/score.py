@@ -5,9 +5,13 @@ class Score:
   def __init__(self, start_time):
     self.start_time = start_time
     self.score = 0
+    self.kill_count = 0
+
+  def increase_kill_count(self):
+    self.kill_count += 1
 
   def update(self):
-    self.score = (pygame.time.get_ticks() - self.start_time) // 1000
+    self.score = (pygame.time.get_ticks() - self.start_time) // 1000 + self.kill_count
 
   def draw(self, screen):
     # 점수 렌더링

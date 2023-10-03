@@ -40,11 +40,18 @@ class Game:
         if random.randint(1, 100) < 3:
             self.enemies.append(Enemy())
 
+        new_enemies = []
         # 충돌 검사
         for enemy in self.enemies:
-            if is_collided(self.player.rect, enemy.rect):
+            if is_collided(self.player.rect, enemy.rect, 10):
                 pygame.quit()
                 quit()
+            if is_collided(self.satellite.rect, enemy.rect, 20):
+              self.score.increase_kill_count()
+              continue
+            new_enemies.append(enemy)
+        self.enemies = new_enemies
+
 
     def draw(self):
         # 게임 객체 그리기
