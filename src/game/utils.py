@@ -1,6 +1,6 @@
 import pygame
 import math
-from constants import direction
+from src.constants import direction
 
 def handle_arrow_key_pressed(up=lambda:None, down=lambda:None, left=lambda:None, right=lambda:None, other=lambda: None):
   keys = pygame.key.get_pressed()

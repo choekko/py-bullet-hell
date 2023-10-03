@@ -1,7 +1,6 @@
-from constants import sprite
 import pygame
 import math
-from constants import setting
+from src.constants import sprite, setting
 
 
 class Satellite:

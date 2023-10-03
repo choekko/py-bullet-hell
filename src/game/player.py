@@ -1,6 +1,6 @@
 import pygame
-from constants import sprite, direction
-from game.utils import handle_arrow_key_pressed
+from src.constants import sprite, direction
+from src.game.utils import handle_arrow_key_pressed
 
 class Player:
     def __init__(self, start_time):

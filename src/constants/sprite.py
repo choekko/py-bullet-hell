@@ -2,9 +2,8 @@ import pygame
 import os
 
 # 현재 스크립트 파일의 디렉토리
-_current_dir = os.path.dirname(__file__)
-_player_image_path = os.path.join(_current_dir, "..", "..", "assets/player/ship.png")
-_enemy_image_path = os.path.join(_current_dir, "..", "..", "assets/enemy/ship.png")
+_player_image_path = "assets/player/ship.png"
+_enemy_image_path = "assets/enemy/ship.png"
 _frame_width = 32
 _frame_height = 32
 

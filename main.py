@@ -1,7 +1,6 @@
 import pygame
-from game.game import Game
-from constants import setting
-import os
+from src.game.game import Game
+from src.constants import setting
 
 # 초기화
 pygame.font.init()
@@ -11,9 +10,8 @@ pygame.init()
 screen = pygame.display.set_mode((setting.SCREEN_WIDTH, setting.SCREEN_HEIGHT))
 pygame.display.set_caption("Space Jam")
 
-current_dir = os.path.dirname(__file__)
-title_image_path = os.path.join(current_dir, "..", "assets/title.png")
-end_image_path = os.path.join(current_dir, "..", "assets/end.png")
+title_image_path = "assets/title.png"
+end_image_path = "assets/end.png"
 
 game_status = 'LOBBY'
 prev_game_status = None

@@ -1,12 +1,11 @@
 import pygame
 import random
-import os
-from game.utils import get_reversed_direction, is_collided
-from game.player import Player
-from game.enemy import Enemy
-from game.score import Score
-from game.satellite import Satellite
-from constants import direction, setting
+from src.game.utils import get_reversed_direction, is_collided
+from src.game.player import Player
+from src.game.enemy import Enemy
+from src.game.score import Score
+from src.game.satellite import Satellite
+from src.constants import direction
 
 class Game:
     def __init__(self, screen, on_game_end):

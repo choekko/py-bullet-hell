@@ -1,8 +1,8 @@
 import pygame
 import random
 import math
-from game.utils import calculate_angle
-from constants import sprite, direction, setting
+from src.game.utils import calculate_angle
+from src.constants import sprite, direction, setting
 
 
 class Enemy:

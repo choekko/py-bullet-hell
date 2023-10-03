@@ -1,5 +1,5 @@
 import pygame
-from constants import setting
+from src.constants import setting
 
 class Score:
   def __init__(self, start_time):
